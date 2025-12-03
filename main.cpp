@@ -156,6 +156,12 @@ bool dfs(int r, int c, vector<vector<int>>& maze, vector<vector<bool>>& visited,
         parent_r[new_r][new_c] = r;
         parent_c[new_r][new_c] = c;
 
+        if (new_r < 0 || new_c < 0) {
+            continue;
+        }
+        if (new_r == N || new_c == M) {
+            continue;
+        }
         //recursive call
         if (dfs(new_r, new_c, maze, visited, parent_r, parent_c, exit_r, exit_c) == true) {
             return true;
