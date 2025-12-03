@@ -147,6 +147,23 @@ bool dfs(int r, int c, vector<vector<int>>& maze, vector<vector<bool>>& visited,
         return true;
     }
 
+    //explore neighbors
+    for (int i = 0; i < 4; ++i) {
+        int new_r = r + dr[i];
+        int new_c = c + dc[i];
+
+        //assign the parent before recursing
+        parent_r[new_r][new_c] = r;
+        parent_c[new_r][new_c] = c;
+
+        //recursive call
+        if (dfs(new_r, new_c, maze, visited, parent_r, parent_c, exit_r, exit_c) == true) {
+            return true;
+        }
+
+    }
+
+    return false;
 }
 
 
@@ -193,11 +210,11 @@ int main() {
     // STUDENT WORK:
     // If found, print the path
     // ------------------------------------------------------
-    // if (found) {
-    //     printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
-    // } else {
-    //     cout << "\nNo path exists.\n";
-    // }
+    if (found) {
+        printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
+    } else {
+        cout << "\nNo path exists.\n";
+    }
 
     return 0;
 }
