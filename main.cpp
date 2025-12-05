@@ -158,6 +158,9 @@ bool dfs(int r, int c, vector<vector<int>>& maze, vector<vector<bool>>& visited,
         if (new_r == N || new_c == M) {
             continue;
         }
+        if (maze[new_r][new_c] == 1 || visited[new_r][new_c]) {
+            continue;
+        }
 
         //assign the parent before recursing
         parent_r[new_r][new_c] = r;
